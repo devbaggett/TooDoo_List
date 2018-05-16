@@ -11,31 +11,16 @@ import UIKit
 class TooDooListViewController: UITableViewController {
     
     var itemArray = [Item]()
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
     
-    let defaults = UserDefaults.standard
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        print(dataFilePath)
         
-        let newItem = Item()
-        newItem.title = "cure headache"
-        itemArray.append(newItem)
-        
-        let newItem2 = Item()
-        newItem2.title = "kill mosquito"
-        itemArray.append(newItem2)
-        
-        let newItem3 = Item()
-        newItem3.title = "get laid"
-        itemArray.append(newItem3)
-        
-        
-        
-        
-        // add plist items to itemArray
-        if let items = defaults.array(forKey: "TooDooListArray") as? [Item] {
-            itemArray = items
-        }
+        loadItems()
     }
 
     // Tableview Datasource Method 1
@@ -71,10 +56,10 @@ class TooDooListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        print(itemArray[indexPath.row])
         
-        // sets first side of done property to be opposite
+        // sets first side of done property to be opposite (toggle checkmark)
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
         
-        tableView.reloadData()
+        saveItems()
         
         // after selecting goes back to being white
         tableView.deselectRow(at: indexPath, animated: true)
@@ -95,10 +80,7 @@ class TooDooListViewController: UITableViewController {
             // what will happen once user clicks the Add Item button on our UIAlert
             self.itemArray.append(newItem)
             
-            self.defaults.set(self.itemArray, forKey: "TooDooListArray")
-            
-            // reload tableView after appending item
-            self.tableView.reloadData()
+            self.saveItems()
         }
         
         alert.addTextField { (alertTextField) in
@@ -108,6 +90,32 @@ class TooDooListViewController: UITableViewController {
         
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
+    }
+    
+    func saveItems() {
+        let encoder = PropertyListEncoder()
+        
+        do {
+            let data = try encoder.encode(itemArray)
+            try data.write(to: dataFilePath!)
+        } catch {
+            print("Error encoding item array, \(error)")
+        }
+        
+        
+        // reload tableView after appending item
+        self.tableView.reloadData()
+    }
+    
+    func loadItems() {
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            let decoder = PropertyListDecoder()
+            do {
+                itemArray = try decoder.decode([Item].self, from: data)
+            } catch {
+                print("Error decoding item array, \(error)")
+            }
+        }
     }
     
 
