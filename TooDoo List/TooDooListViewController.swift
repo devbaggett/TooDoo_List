@@ -10,7 +10,7 @@ import UIKit
 
 class TooDooListViewController: UITableViewController {
     
-    let itemArray = ["cure headache", "kill mosquito", "get laid"]
+    var itemArray = ["cure headache", "kill mosquito", "get laid"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +49,30 @@ class TooDooListViewController: UITableViewController {
         // after selecting goes back to being white
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
+    
+    // ADD NEW ITEMS
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        
+        var textField = UITextField()
+        
+        let alert = UIAlertController(title: "Add New Item", message: "", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
+            // what will happen once user clicks the Add Item button on our UIAlert
+            self.itemArray.append(textField.text!)
+            // reload tableView after appending item
+            self.tableView.reloadData()
+        }
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Create new item"
+            textField = alertTextField
+        }
+        
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
 
 }
 
