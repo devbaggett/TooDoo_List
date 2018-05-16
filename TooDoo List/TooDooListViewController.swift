@@ -11,9 +11,16 @@ import UIKit
 class TooDooListViewController: UITableViewController {
     
     var itemArray = ["cure headache", "kill mosquito", "get laid"]
+    
+    let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // add plist items to itemArray
+        if let items = defaults.array(forKey: "TooDooListArray") as? [String] {
+            itemArray = items
+        }
     }
 
     // Tableview Datasource Method 1
@@ -60,6 +67,9 @@ class TooDooListViewController: UITableViewController {
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
             // what will happen once user clicks the Add Item button on our UIAlert
             self.itemArray.append(textField.text!)
+            
+            self.defaults.set(self.itemArray, forKey: "TooDooListArray")
+            
             // reload tableView after appending item
             self.tableView.reloadData()
         }
