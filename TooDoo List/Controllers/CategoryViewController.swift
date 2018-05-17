@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SwipeCellKit
 
 class CategoryViewController: UITableViewController {
     // category of category objects
@@ -21,6 +22,9 @@ class CategoryViewController: UITableViewController {
         super.viewDidLoad()
         // fetch data from categories and reload into tableView
         loadCategories()
+        
+        // increase heigh of cell
+        tableView.rowHeight = 80.0
     }
     
     
@@ -31,12 +35,20 @@ class CategoryViewController: UITableViewController {
         return categories.count
     }
     
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! SwipeTableViewCell
+//        cell.delegate = self
+//        return cell
+//    }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // creates reusable cell and adds it to table at indexpath
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! SwipeTableViewCell
         // set cell textlabel.text property to category's name attribute
         cell.textLabel?.text = categories[indexPath.row].name
+        
+        cell.delegate = self
         // render on screen
         return cell
     }
@@ -118,6 +130,43 @@ class CategoryViewController: UITableViewController {
             textField.placeholder = "Add a new category"
         }
         present(alert, animated: true, completion: nil)
+    }
+    
+}
+
+// MARK: - Swipe Cell Delegate Methods
+
+extension CategoryViewController: SwipeTableViewCellDelegate {
+    
+    // required delegate method
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        
+        // DELETE
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            // handle action by updating model with deletion
+            self.context.delete(self.categories[indexPath.row])
+            // remove from categories array (used to load up the tableView datasource)
+            self.categories.remove(at: indexPath.row)
+            // save context
+//            self.saveCategories()
+            // reload tableView
+//            tableView.reloadData()
+        }
+        
+        // customize the action appearance
+        deleteAction.image = UIImage(named: "delete_icon")
+        
+        
+        return [deleteAction]
+    }
+    
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
+        var options = SwipeTableOptions()
+        options.expansionStyle = .destructive
+        
+        return options
     }
     
 }

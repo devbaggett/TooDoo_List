@@ -8,16 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		8B1DEB2520AD536A00C32776 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DEB2420AD536A00C32776 /* CategoryViewController.swift */; };
+		8B6E7CE620AE399200F8CBD5 /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6E7CE520AE399200F8CBD5 /* SwipeTableViewController.swift */; };
 		8BE8921C20ACB28D00AB6066 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE8921B20ACB28D00AB6066 /* AppDelegate.swift */; };
 		8BE8921E20ACB28D00AB6066 /* TooDooListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE8921D20ACB28D00AB6066 /* TooDooListViewController.swift */; };
 		8BE8922120ACB28D00AB6066 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BE8921F20ACB28D00AB6066 /* Main.storyboard */; };
 		8BE8922320ACB28D00AB6066 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BE8922220ACB28D00AB6066 /* Assets.xcassets */; };
 		8BE8922620ACB28D00AB6066 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BE8922420ACB28D00AB6066 /* LaunchScreen.storyboard */; };
 		8BE8925620ACF51800AB6066 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8BE8925420ACF51800AB6066 /* DataModel.xcdatamodeld */; };
+		8C782C32A3EFF123160394F0 /* Pods_TooDoo_List.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4125E5A3FE2EFD6F461A8D0D /* Pods_TooDoo_List.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4125E5A3FE2EFD6F461A8D0D /* Pods_TooDoo_List.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TooDoo_List.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B1DEB2420AD536A00C32776 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		8B6E7CE520AE399200F8CBD5 /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		8BE8921820ACB28D00AB6066 /* TooDoo List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TooDoo List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BE8921B20ACB28D00AB6066 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BE8921D20ACB28D00AB6066 /* TooDooListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooDooListViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +30,8 @@
 		8BE8922520ACB28D00AB6066 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8BE8922720ACB28D00AB6066 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BE8925520ACF51800AB6066 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		8E1DD5F8D2FB543A401860A3 /* Pods-TooDoo List.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TooDoo List.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TooDoo List/Pods-TooDoo List.debug.xcconfig"; sourceTree = "<group>"; };
+		E25B5EC4D68144DE242DF6FB /* Pods-TooDoo List.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TooDoo List.release.xcconfig"; path = "Pods/Target Support Files/Pods-TooDoo List/Pods-TooDoo List.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +39,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C782C32A3EFF123160394F0 /* Pods_TooDoo_List.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6656992B2E2DA4C1F853F1D5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8E1DD5F8D2FB543A401860A3 /* Pods-TooDoo List.debug.xcconfig */,
+				E25B5EC4D68144DE242DF6FB /* Pods-TooDoo List.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8BE8920F20ACB28D00AB6066 = {
 			isa = PBXGroup;
 			children = (
 				8BE8921A20ACB28D00AB6066 /* TooDoo List */,
 				8BE8921920ACB28D00AB6066 /* Products */,
+				6656992B2E2DA4C1F853F1D5 /* Pods */,
+				FC1FB89E136384338E69359B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,6 +99,7 @@
 			children = (
 				8B1DEB2420AD536A00C32776 /* CategoryViewController.swift */,
 				8BE8921D20ACB28D00AB6066 /* TooDooListViewController.swift */,
+				8B6E7CE520AE399200F8CBD5 /* SwipeTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -102,6 +121,14 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		FC1FB89E136384338E69359B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4125E5A3FE2EFD6F461A8D0D /* Pods_TooDoo_List.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -109,9 +136,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8BE8922A20ACB28D00AB6066 /* Build configuration list for PBXNativeTarget "TooDoo List" */;
 			buildPhases = (
+				B380C8DB57C9BCC87ADABF7C /* [CP] Check Pods Manifest.lock */,
 				8BE8921420ACB28D00AB6066 /* Sources */,
 				8BE8921520ACB28D00AB6066 /* Frameworks */,
 				8BE8921620ACB28D00AB6066 /* Resources */,
+				F6DBBB85560E104299358A87 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -168,6 +197,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B380C8DB57C9BCC87ADABF7C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TooDoo List-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6DBBB85560E104299358A87 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TooDoo List/Pods-TooDoo List-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TooDoo List/Pods-TooDoo List-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8BE8921420ACB28D00AB6066 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -177,6 +245,7 @@
 				8BE8921E20ACB28D00AB6066 /* TooDooListViewController.swift in Sources */,
 				8BE8925620ACF51800AB6066 /* DataModel.xcdatamodeld in Sources */,
 				8BE8921C20ACB28D00AB6066 /* AppDelegate.swift in Sources */,
+				8B6E7CE620AE399200F8CBD5 /* SwipeTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +387,7 @@
 		};
 		8BE8922B20ACB28D00AB6066 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E1DD5F8D2FB543A401860A3 /* Pods-TooDoo List.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -336,6 +406,7 @@
 		};
 		8BE8922C20ACB28D00AB6066 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E25B5EC4D68144DE242DF6FB /* Pods-TooDoo List.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
