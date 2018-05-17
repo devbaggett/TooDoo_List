@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B1DEB2520AD536A00C32776 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DEB2420AD536A00C32776 /* CategoryViewController.swift */; };
 		8BE8921C20ACB28D00AB6066 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE8921B20ACB28D00AB6066 /* AppDelegate.swift */; };
 		8BE8921E20ACB28D00AB6066 /* TooDooListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE8921D20ACB28D00AB6066 /* TooDooListViewController.swift */; };
 		8BE8922120ACB28D00AB6066 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BE8921F20ACB28D00AB6066 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B1DEB2420AD536A00C32776 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		8BE8921820ACB28D00AB6066 /* TooDoo List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TooDoo List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BE8921B20ACB28D00AB6066 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BE8921D20ACB28D00AB6066 /* TooDooListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooDooListViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 		8BE8923020ACD25F00AB6066 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8B1DEB2420AD536A00C32776 /* CategoryViewController.swift */,
 				8BE8921D20ACB28D00AB6066 /* TooDooListViewController.swift */,
 			);
 			path = Controllers;
@@ -170,6 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B1DEB2520AD536A00C32776 /* CategoryViewController.swift in Sources */,
 				8BE8921E20ACB28D00AB6066 /* TooDooListViewController.swift in Sources */,
 				8BE8925620ACF51800AB6066 /* DataModel.xcdatamodeld in Sources */,
 				8BE8921C20ACB28D00AB6066 /* AppDelegate.swift in Sources */,

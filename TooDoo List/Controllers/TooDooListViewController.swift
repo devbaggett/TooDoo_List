@@ -13,6 +13,14 @@ class TooDooListViewController: UITableViewController {
     
     var itemArray = [Item]()
     
+    // nil until we can set it in CategoryVC TableView delegate method
+    var selectedCategory: Category? {
+        didSet{
+            // happen as soon as selectedCategory is set with value
+            loadItems()
+        }
+    }
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     
@@ -24,8 +32,8 @@ class TooDooListViewController: UITableViewController {
         
         // Did non-programmitcally by attaching search bar to viewController
 //        searchBar.delegate = self
-        
-        loadItems()
+        // can delete because we are sure we have value for selectedCategory
+//        loadItems()
     }
 
     // Tableview Datasource Method 1
@@ -92,10 +100,11 @@ class TooDooListViewController: UITableViewController {
             let newItem = Item(context: self.context)
             newItem.title = textField.text!
             newItem.done = false
-            
+            // specify parentCategory (inside closure so self added)
+            newItem.parentCategory = self.selectedCategory
             // what will happen once user clicks the Add Item button on our UIAlert
             self.itemArray.append(newItem)
-            
+            // save to db
             self.saveItems()
         }
         
@@ -122,8 +131,21 @@ class TooDooListViewController: UITableViewController {
     
     // READ
     // if we call this function and don't provide a value for the request, we can provide a default value (commented code below)
-    func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest()) { // external param: with, internal: request
+    func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest(), predicate: NSPredicate? = nil) { // external param: with, internal: request
 //        let request: NSFetchRequest<Item> = Item.fetchRequest()
+        
+        // filter and keep items where parentCategory matches current selectedCategory
+        let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", selectedCategory!.name!)
+        // making sure not nil
+        if let additionalPredicate = predicate {
+            // initialize with array of predicate passed in as argument, and subpredicate
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, additionalPredicate])
+        }  else {
+            // only 1 predicate in request
+            request.predicate = categoryPredicate
+        }
+        
+        
         do {
             // try using our context (and place into itemArray) to fetch results from persistance store that satisfy the parameters
             itemArray = try context.fetch(request)
@@ -144,11 +166,11 @@ extension TooDooListViewController: UISearchBarDelegate {
         // query database, return array of items
         let request: NSFetchRequest<Item> = Item.fetchRequest()
         // look for the ones where the title of the item contains this text [case insensitive] and add our query to our request
-        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
+        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
         // sort using the key "title" in alphabetical order and add sort descriptor to our request (expects an array of NSSortDesriptors)
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         // run our request and fetch our results
-        loadItems(with: request)
+        loadItems(with: request, predicate: predicate)
     }
     
     // triggers delegate method with text in searchbar has changed (real-time)
